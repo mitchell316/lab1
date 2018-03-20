@@ -1,0 +1,12 @@
+import numpy as np
+import matplotlib.pyplot as plt
+voltage = np.loadtxt('C:\Users\Mitchell\Desktop\V.txt')
+current = np.loadtxt('C:\Users\Mitchell\Desktop\C.txt')
+time = np.loadtxt('C:\Users\Mitchell\Desktop\T.txt')
+def LineFit(current, voltage):
+    current_avg = current.mean()
+    slope = (voltage * (current - current_avg)).sum()/(current * (current - current_avg)).sum()
+    yint= voltage.mean() - slope*current_avg
+    y = slope * current +yint
+    plt.plot(current, y)
+plt.show()
